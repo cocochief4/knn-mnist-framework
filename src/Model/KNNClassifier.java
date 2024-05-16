@@ -28,17 +28,16 @@ public class KNNClassifier {
         
         DataPoint[] closest = new DataPoint[k];
 
-        // TODO: write a k-nearest-neighbor classifier.  Return its prediction of "0" to "9"
         // Fill the closest array with the k closest points in trainingData to c
         for (DataPoint d : trainingData) {
             for (int i = 0; i < closest.length; i++) {
-                if (closest[i] == null || d.distanceTo(c) < closest[i].distanceTo(c)) {
+                if (closest[i] == null || d.cosDistanceTo(c) < closest[i].cosDistanceTo(c)) {
                     closest[i] = d;
                     break;
                 }
             }
         }
-        
+
         // Count the number of times each label appears in the closest array
         // Does not weight by distance
         HashMap<String, Integer> labelCounts = new HashMap<>();
@@ -60,13 +59,7 @@ public class KNNClassifier {
         }
 
 
-        return prediction;  // replace this line
-    }
-
-    public static double distance(double[] d1, double[] d2) {
-        // TODO:  Use the n-dimensional Euclidean distance formula to find the distance between d1 and d2
-
-        return -1;
+        return prediction;
     }
 
     public void testOnData(List<DataPoint> test) {

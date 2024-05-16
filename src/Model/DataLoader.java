@@ -75,15 +75,23 @@ public class DataLoader {
             String label = values[0];
 
             double[] featureVector = new double[values.length-1];
+            double[] thick = new double[values.length-1];
+            double[] thin = new double[values.length-1];
             for (int j = 0; j < featureVector.length; j++) {
                 double grayValue = Double.parseDouble(values[j+1]);
                 featureVector[j] = 255 - grayValue;                     // color reverse so background is white
-                                                                        // this will let our interactive classifier
+                thick[j] = featureVector[j] < 255 ? 0 : 255;
+                thin[j] = featureVector[j] > 128 ? 255 : 0;
+                                                        // this will let our interactive classifier
                                                                         // run better.
             }
-
+            
             DataPoint point = new DataPoint(label, featureVector);
+            DataPoint pthick = new DataPoint(label, thick);
+            DataPoint pthin = new DataPoint(label, thin);
             dataset.add(point);
+            dataset.add(pthin);
+            dataset.add(pthick);
         }
 
         return dataset;
