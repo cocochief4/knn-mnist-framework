@@ -24,4 +24,13 @@ public class DataPoint {
     public void setData(double[] data) {
         this.data = data;
     }
+
+    public double distanceTo(DataPoint other) {
+        double[] otherData = other.getData();
+        double sum = 0;
+        for (int i = 0; i < data.length; i++) {
+            sum += Math.pow(data[i] - otherData[i], 2);
+        }
+        return Math.sqrt(sum);
+    }
 }

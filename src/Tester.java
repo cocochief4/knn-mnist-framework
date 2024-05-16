@@ -9,7 +9,7 @@ public class Tester {
         KNNClassifier classifier;
         String prediction = "";
 
-        classifier = new KNNClassifier(3);
+        classifier = new KNNClassifier(2);
         List<DataPoint> training = DataLoader.loadMNistData("data/mnist_train.csv");
         List<DataPoint> test = DataLoader.loadMNistData("data/mnist_test.csv");
         classifier.trainOnData(training);

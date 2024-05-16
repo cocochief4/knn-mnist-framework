@@ -43,7 +43,7 @@ public class InteractiveTester extends PApplet {
         drawImage(pixels);
 
         if (mousePressed) {
-            addPixels(2);
+            addPixels(1);
         }
 
         fill(255, 0, 0);
