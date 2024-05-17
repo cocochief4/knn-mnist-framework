@@ -80,8 +80,8 @@ public class DataLoader {
             for (int j = 0; j < featureVector.length; j++) {
                 double grayValue = Double.parseDouble(values[j+1]);
                 featureVector[j] = 255 - grayValue;                     // color reverse so background is white
-                thick[j] = featureVector[j] < 255 ? 0 : 255;
-                thin[j] = featureVector[j] > 128 ? 255 : 0;
+                thick[j] = featureVector[j] < 255 ? 0 : 255; // For Thick, set anythng that is not white (nothing drawn) to be full black
+                thin[j] = featureVector[j] > 128 ? 255 : 0; // For thin, set anything that is closer to full white than full black to be white
                                                         // this will let our interactive classifier
                                                                         // run better.
             }
